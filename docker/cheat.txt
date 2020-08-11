@@ -1,0 +1,18 @@
+1. compile docker
+https://ops.tips/blog/compiling-your-own-forked-docker-release/
+
+apt-get install -y build-essential
+apt-get install -y docker.io
+git clone https://github.com/docker/docker-ce.git
+git checkout v18.03.1-ce
+make static DOCKER_BUILD_PKGS=static-linux
+dpkg --purge docker.io
+
+cp components/packaging/static/build/linux/* /usr/local/bin
+
+2. set runC vuln
+https://github.com/Frichetten/CVE-2019-5736-PoC
+
+3. set shellshock with apache running as root
+
+
