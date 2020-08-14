@@ -13,4 +13,5 @@ RUN echo "#!/bin/bash\necho 'Content-type: text/html'\necho ''\necho 'CGI Bash E
 RUN chmod 755 /usr/local/apache2/cgi-bin/index.bash
 RUN sed -i 's/daemon/root/g' /usr/local/apache2/conf/httpd.conf
 RUN sed -i 's$#LoadModule cgid_module modules/mod_cgid.so$LoadModule cgid_module modules/mod_cgid.so$g' /usr/local/apache2/conf/httpd.conf
+RUN sed -i 's/80/8080/g' /usr/local/apache2/conf/httpd.conf
 CMD ["/usr/local/apache2/bin/httpd", "-X"]
