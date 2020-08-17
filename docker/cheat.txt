@@ -22,7 +22,8 @@ sudo docker run -it -v $(pwd):/app ubuntu:18.04 /bin/bash
 sudo docker network create --subnet=172.18.0.0/16 pocnet
 sudo docker login
 sudo docker run --network pocnet --ip 172.18.0.22 sandrolex2/poc
-sudo docker run --network pocnet --ip 172.18.0.23 -p 80:80 rproxy
+sudo docker run --network pocnet --ip 172.18.0.23 -p 80:80 sandrolex2/rproxy
+sudo docker run --network pocnet --ip 172.18.0.40 sandrolex2/stub
 curl host/cgi-bin/index.bash
 
 nc -lnvp 8888
