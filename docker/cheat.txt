@@ -36,3 +36,8 @@ dirb http://bionic/app1/ /usr/share/dirb/wordlists/vulns/cgis.txt | grep 200
 4. detecting shellsock with nmap
 nmap -sV -p- --script http-shellshock --script-args uri=/cgi-bin/index.bash 172.16.131.132
 
+5. capturing traffic of containers in host
+ls /sys/class/net
+-- get the veth interface name
+sudo tcpdump -i vethc810c2a -w a.pcap
+
